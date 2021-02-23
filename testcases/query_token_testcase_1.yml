@@ -1,0 +1,32 @@
+
+config:
+    name: token关联查询商品信息接口信息
+    setup_hooks:
+        - ${hook_up()}
+    teardown_hooks:
+        - ${hook_down()}
+
+teststeps:
+-
+    name: 登录成功的测试请求
+    api: api/login_token_extract.yml
+    extract:
+        - token: content.data.token
+    setup_hooks:
+        - ${hook_log(---测试1开始-----)}
+
+    teardown_hooks:
+        - $ {hook_log(---测试1结束---)}
+-
+    name: 查询商品详情测试请求
+    api: api/query_token_extract.yml
+    variables:
+        token: $token
+    validate:
+        - eq: ["status_code", 200]
+    setup_hooks:
+        - ${hook_log(---测试2开始-----)}
+
+    teardown_hooks:
+        - ${hook_log(---测试2结束---)}
+

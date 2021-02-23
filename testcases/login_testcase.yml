@@ -1,0 +1,12 @@
+
+config:
+    name: "登录的测试用例"
+
+
+teststeps:
+-
+    name: $title
+    api: api/demo_apilogin.yml
+    validate:
+        - eq: ["status_code", 200]
+

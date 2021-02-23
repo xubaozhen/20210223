@@ -1,0 +1,10 @@
+
+config:
+    name: 确认订单接口
+
+testcases:
+-
+    name: 确认订单接口
+    testcase: testcases/confirm_testcase.yml
+
+

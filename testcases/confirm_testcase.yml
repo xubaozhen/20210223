@@ -1,0 +1,45 @@
+
+config:
+    name: 确认订单的接口
+
+
+teststeps:
+-
+    name: 登录成功的测试请求
+    api: api/login_token_extract.yml
+    extract:
+        - token: content.data.token
+-
+    name: 查询商品详情测试请求
+    api: api/query_token_extract.yml
+    extract:
+        itemId: content.data.item.itemId
+        img: content.data.item.mainImage
+        title: content.data.item.title
+        wholesalePrice: content.data.skuList.0.wholesalePrice
+        features : content.data.skuList.0.featureText
+        price: content.data.skuList.0.wholesalePrice
+        skuId: content.data.skuList.0.skuId
+    variables:
+        token: $token
+    validate:
+        - eq: ["status_code", 200]
+-
+    name: 确认订单的接口请求
+    api: api/confirm_order.yml
+    variables:
+        token: $token
+        itemId: $itemId
+        img: $img
+        title: $title
+        wholesalePrice: $wholesalePrice
+        features : $features
+        price: $price
+        skuId: $skuId
+    validate:
+        - eq: ["status_code", 200]
+    teardown_hooks:
+        - ${sleep($response,10)}
+
+
+

@@ -1,0 +1,15 @@
+
+config:
+    name: 登录参数化的套件
+
+testcases:
+-
+    name: 登录的参数化
+    testcase: testcases/login_testcase.yml
+    parameters:
+        title-code-mobile-message:
+            - ['登录成功', '8888', '18767169265','success']
+            - ['验证码错误','6652','18767169265','验证码输入错误']
+            - ['手机号码为空','6652','','手机号不能为空']
+
+

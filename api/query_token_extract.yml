@@ -1,0 +1,19 @@
+name: token关联的商品查询接口
+base_url: http://192.200.3.177:8901
+variables:
+    itemId: 7902
+
+request:
+    url: /api/item
+    method: GET
+    headers:
+        Content-Type: "application/json"
+        clientPlatform: "2"
+        appVersion: "1.4.1"
+        appType: "2"
+        token: $token
+    params:
+        itemId: $itemId
+
+validate:
+    - ==: ["status_code", 200]

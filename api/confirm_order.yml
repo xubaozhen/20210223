@@ -1,0 +1,47 @@
+name: 订单确认接口
+base_url: http://192.200.3.177:8901
+variables:
+    itemId: $itemId
+    img: $img
+    title: $title
+    wholesalePrice: $wholesalePrice
+    features : $features
+    itemId: $itemId
+    price: $price
+    skuId: $skuId
+request:
+    url: /marketing/calc/confirmOrder
+    method : POST
+    headers:
+        Content-Type: "application/json"
+        clientPlatform: "2"
+        appVersion: "1.4.1"
+        appType: "2"
+        token: $token
+    json:
+            activityProds:
+            -   activityItemId: '0'
+                matchActivity: false
+                skuList:
+                -   count: '1'
+                    features: $ features
+                    img: $img
+                    isCanPost: false
+                    itemId: $itemId
+                    price: $price
+                    skuId: $skuId
+                    storeId: 0
+                    title: $title
+                    wholesalePrice: $wholesalePrice
+            useActivityOrCoupon: 1
+
+
+
+validate:
+    - ==: ["status_code", 200]
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+
+config:
+    name: 查询参数化的套件
+
+testcases:
+-
+    name: 商品详情的参数化
+    testcase: testcases/query_token_testcase.yml
+
+

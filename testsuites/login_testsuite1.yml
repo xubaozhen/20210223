@@ -1,0 +1,14 @@
+
+config:
+    name: 登录参数化的套件
+skip: 跳过
+
+testcases:
+-
+    name: 登录的参数化
+    testcase: testcases/login_testcase.yml
+    parameters:
+        title-code-mobile-message: ${P(data/data.csv)}
+
+
+

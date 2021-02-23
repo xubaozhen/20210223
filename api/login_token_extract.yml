@@ -1,0 +1,22 @@
+
+name: token关联得登录接口（extract）
+variables:
+    code: 8888
+    mobile: 18767169265
+
+request:
+    url: http://192.200.3.177:8901/user-login/code/loginOrRegister
+    method: POST
+    headers:
+        Content-Type: "application/json"
+        clientPlatform: "2"
+        appVersion: "1.4.1"
+        appType: "2"
+    json:
+        code: $code
+        mobile: $mobile
+validate:
+    - eq: ["status_code", 200]
+    - eq: ["content.message",'success']
+
+

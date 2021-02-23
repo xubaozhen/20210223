@@ -1,0 +1,23 @@
+
+name: 康有利登录接口
+variables:
+    message: $message
+    code: $code
+    mobile: $mobile
+skip: 跳过
+request:
+    url: http://192.200.3.177:8901/user-login/code/loginOrRegister
+    method: POST
+    headers:
+        Content-Type: "application/json"
+        clientPlatform: "2"
+        appVersion: "1.4.1"
+        appType: "2"
+    json:
+        code: $code
+        mobile: $mobile
+validate:
+    - eq: ["status_code", 200]
+    - eq: ["content.message",$message]
+
+
