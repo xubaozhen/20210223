@@ -39,7 +39,7 @@ teststeps:
     validate:
         - eq: ["status_code", 200]
     teardown_hooks:
-        - ${sleep($response,10)}
+        - ${sleep($response,1)}
 
 
 
